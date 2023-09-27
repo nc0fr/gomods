@@ -1,0 +1,86 @@
+# Copyright Nicolas Paul (2023)
+#
+# * n@nc0.fr
+#
+# This software is a computer program whose purpose is to index and references
+# Go modules to the go.nc0.fr domain.
+#
+# This software is governed by the CeCILL license under French law and
+# abiding by the rules of distribution of free software.  You can  use, 
+# modify and/ or redistribute the software under the terms of the CeCILL
+# license as circulated by CEA, CNRS and INRIA at the following URL
+# "http://www.cecill.info". 
+#
+# As a counterpart to the access to the source code and  rights to copy,
+# modify and redistribute granted by the license, users are provided only
+# with a limited warranty  and the software's author,  the holder of the
+# economic rights,  and the successive licensors  have only  limited
+# liability. 
+#
+# In this respect, the user's attention is drawn to the risks associated
+# with loading,  using,  modifying and/or developing or reproducing the
+# software by the user in light of its specific status of free software,
+# that may mean  that it is complicated to manipulate,  and  that  also
+# therefore means  that it is reserved for developers  and  experienced
+# professionals having in-depth computer knowledge. Users are therefore
+# encouraged to load and test the software's suitability as regards their
+# requirements in conditions enabling the security of their systems and/or 
+# data to be ensured and,  more generally, to use and operate it in the 
+# same conditions as regards security. 
+#
+# The fact that you are presently reading this means that you have had
+# knowledge of the CeCILL license and that you accept its terms.
+
+# SVGU configuration file for go.nc0.fr
+# Reference: https://github.com/nc0fr/svgu/tree/master/doc/references.md
+
+load("@svgu/git.star", "git")
+
+# GitHub username of Nicolas Paul
+_NC0_GITHUB = "nc0fr"
+_NC0_SOURCEHUT = "~nc0"
+
+index(domain = "go.nc0.fr")
+
+git.github(
+    name = "foo",
+    user = _NC0_GITHUB,
+    repo = "foo-go",
+    ref = "master",
+)
+
+git.github(
+    name = "feur_bot",
+    user = _NC0_GITHUB,
+    repo = "feur_bot",
+    ref = "master",
+)
+
+git.github(
+    name = "clawflake",
+    user = _NC0_GITHUB,
+    repo = "clawflake",
+    ref = "master",
+)
+
+git.github(
+    name = "crocc",
+    user = _NC0_GITHUB,
+    repo = "crocc",
+    ref = "master",
+)
+
+# deprecated in favor of SVGU
+git.github(
+    name = "staticgovanityurls",
+    user = _NC0_GITHUB,
+    repo = "staticgovanityurls",
+    ref = "master",
+)
+
+git.github(
+    name = "svgu",
+    user = _NC0_GITHUB,
+    repo = "svgu",
+    ref = "master",
+)
