@@ -1,0 +1,38 @@
+{
+  "name": "@nc0/gomods",
+  "version": "1.0.0",
+  "description": "Index of Go modules published at go.nc0.fr",
+  "main": "index.js",
+  "private": true,
+  "bugs": {
+    "url": "https://github.com/nc0fr/gomods/issues",
+    "email": "n@nc0.fr"
+  },
+  "homepage": "https://go.nc0.fr",
+  "repository": {
+    "type": "git",
+    "url": "github:nc0fr/gomods"
+  },
+  "scripts": {
+    "build": "svgu -o=dist -v -c=svgu.sky",
+    "lint:check": "buildifier --lint=warn --warnings=all --mode=diff svgu.sky",
+    "lint": "buildifier --lint=fix --warnings=all --mode=fix svgu.sky"
+  },
+  "keywords": [
+    "go",
+    "golang",
+    "modules",
+    "nc0",
+    "index",
+    "svgu"
+  ],
+  "author": "Nicolas Paul <n@nc0.fr> (https://nc0.fr)",
+  "contributors": [
+    "Nicolas Paul <n@nc0.fr> (https://nc0.fr)"
+  ],
+  "license": "CeCILL",
+  "dependencies": {
+    "@bazel/buildifier": "^6.1.2",
+    "wrangler": "^3.5.0"
+  }
+}

@@ -1,0 +1,73 @@
+gomods
+======
+
+An index of Go modules referenced on my domain [0].
+The index is a set of static HTML documents generated using the SVGU [1] tool
+which is then hosted on a Web server.
+
+
+Usage
+-----
+
+Note: Apart from modifying the configuration, this project is not meant to be
+used manually. Instead, everything is automated within CI/CD.
+
+The configuration for the index is done within the svgu.sky file, which is a
+Starlark [2] document. Everything it written based upon the SVGU API [3].
+
+To build the index, you need to install SVGU [1], Node.js [4] and NPM [5].
+Then, it is a matter of running the command:
+
+  npm run build
+
+A static set of HTML documents will be available inside a "dist" directory.
+
+[0]: https://go.nc0.fr
+[1]: https://github.com/nc0fr/svgu
+[2]: https://starlark.net
+[3]: https://github.com/nc0fr/svgu/blob/master/doc/references.md
+[4]: https://nodejs.org
+[5]: https://npmjs.com
+
+
+License
+-------
+
+This index is governed by the CeCILL license.
+The referenced modules are available under their own legal licensing contract.
+
+As recommended by the CeCILL authors, the following notice SHOULD be placed at
+the beginning of every files within this repository, if possible.
+
+  Copyright Nicolas Paul (2023)
+ 
+  * n@nc0.fr
+ 
+  This software is a computer program whose purpose is to index and references
+  Go modules to the go.nc0.fr domain.
+ 
+  This software is governed by the CeCILL license under French law and
+  abiding by the rules of distribution of free software.  You can  use,
+  modify and/ or redistribute the software under the terms of the CeCILL
+  license as circulated by CEA, CNRS and INRIA at the following URL
+  "http://www.cecill.info".
+ 
+  As a counterpart to the access to the source code and  rights to copy,
+  modify and redistribute granted by the license, users are provided only
+  with a limited warranty  and the software's author,  the holder of the
+  economic rights,  and the successive licensors  have only  limited
+  liability.
+ 
+  In this respect, the user's attention is drawn to the risks associated
+  with loading,  using,  modifying and/or developing or reproducing the
+  software by the user in light of its specific status of free software,
+  that may mean  that it is complicated to manipulate,  and  that  also
+  therefore means  that it is reserved for developers  and  experienced
+  professionals having in-depth computer knowledge. Users are therefore
+  encouraged to load and test the software's suitability as regards their
+  requirements in conditions enabling the security of their systems and/or
+  data to be ensured and,  more generally, to use and operate it in the
+  same conditions as regards security.
+ 
+  The fact that you are presently reading this means that you have had
+  knowledge of the CeCILL license and that you accept its terms.
