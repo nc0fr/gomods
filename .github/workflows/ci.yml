@@ -67,7 +67,7 @@ jobs:
         run: npm run lint:check
       - name: Build index
         run: npm run build
-      - uses: actions/upload-artifact@v2
+      - uses: actions/upload-artifact@v3
         with:
           name: gomods
           path: dist
