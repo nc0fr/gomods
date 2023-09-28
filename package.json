@@ -14,7 +14,7 @@
     "url": "github:nc0fr/gomods"
   },
   "scripts": {
-    "build": "svgu -o=dist -v -c=svgu.sky",
+    "build": "~/go/bin/svgu -o=dist -v -c=svgu.sky",
     "lint:check": "buildifier --lint=warn --warnings=all --mode=diff svgu.sky",
     "lint": "buildifier --lint=fix --warnings=all --mode=fix svgu.sky"
   },
