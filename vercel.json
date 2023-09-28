@@ -1,6 +1,6 @@
 {
 	"buildCommand": "npm run build",
 	"cleanUrls": true,
-	"installCommand": "amazon-linux-extras install golang1.20 && go install go.nc0.fr/svgu/cmd/svgu@latest; npm ci",
+	"installCommand": "amazon-linux-extras install golang1.19 && go install go.nc0.fr/svgu/cmd/svgu@latest; npm ci",
 	"outputDirectory": "dist"
 }
