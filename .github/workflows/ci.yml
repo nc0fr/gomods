@@ -47,9 +47,6 @@ jobs:
     name: Continuous integration
     runs-on: ubuntu-latest
     timeout-minutes: 2
-    permissions:
-      contents: read
-      deployments: write # for status within GitHub
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v3
@@ -73,13 +70,3 @@ jobs:
           path: dist
           if-no-files-found: error
           retention-days: 60
-      - uses: cloudflare/pages-action@v1
-        with:
-          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          projectName: go-nc0-fr
-          directory: dist
-          gitHubToken: ${{ secrets.GITHUB_TOKEN }}
-          wranglerVersion: '3'
-          branch: ${{ github.ref_name }}
-  
