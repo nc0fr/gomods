@@ -32,7 +32,7 @@
   ],
   "license": "CeCILL",
   "dependencies": {
-    "@bazel/buildifier": "6.1.2",
+    "@bazel/buildifier": "6.3.3",
     "vercel": "32.3.1"
   }
 }
