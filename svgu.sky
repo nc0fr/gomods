@@ -184,10 +184,8 @@ def mercurial_sourcehut(
 index(domain = DOMAIN)
 
 def simple_github_modules():
-    """
-    Simple modules are modules whose repository on GitHub is the
-    same as the module name.
-    """
+    # Simple modules are modules whose repository on GitHub is the
+    # same as the module name.
 
     # Note: staticgovanityurls is deprecated in favor of SVGU.
     SIMPLE_GITHUB_MODULES = [
