@@ -33,56 +33,173 @@
 
 """
 SVGU configuration file for go.nc0.fr
-Reference: https://github.com/nc0fr/svgu/tree/master/doc/references.md
+Reference: https://svgu.nc0.fr
 """
 
-load("@svgu/git.star", "git")
+# VCS
+BAZAAR = "bzr"
+GIT = "git"
+FOSSIL = "fossil"
+SUBVERSION = "svn"
+MERCURIAL = "hg"
 
-# GitHub username of Nicolas Paul
-_NC0_GITHUB = "nc0fr"
-# _NC0_SOURCEHUT = "~nc0"
+DEFAULT_GIT_REF = "master"
+DEFAULT_MERCURIAL_REV = "master"
 
-index(domain = "go.nc0.fr")
+DEFAULT_GITHUB_INSTANCE = "https://github.com"
+DEFAULT_GITLAB_INSTANCE = "https://gitlab.com"
+DEFAULT_GIT_SOURCEHUT_INSTANCE = "https://git.sr.ht"
+DEFAULT_MERCURIAL_SOURCEHUT_INSTANCE = "https://hg.sr.ht"
 
-git.github(
-    name = "foo",
-    user = _NC0_GITHUB,
-    repo = "foo-go",
-    ref = "master",
-)
+NC0_GITHUB = "nc0fr"
+NC0_SOURCEHUT = "nc0"
+NC0_GITLAB = "nc0"
 
-git.github(
-    name = "feur_bot",
-    user = _NC0_GITHUB,
-    repo = "feur_bot",
-    ref = "master",
-)
+DOMAIN = "go.nc0.fr"
 
-git.github(
-    name = "clawflake",
-    user = _NC0_GITHUB,
-    repo = "clawflake",
-    ref = "master",
-)
+def github(
+        name,
+        instance = DEFAULT_GITHUB_INSTANCE,
+        user = NC0_GITHUB,
+        repo = "",
+        ref = DEFAULT_GIT_REF):
+    """Register a Go module hosted on GitHub.
 
-git.github(
-    name = "crocc",
-    user = _NC0_GITHUB,
-    repo = "crocc",
-    ref = "master",
-)
+    Args:
+        name (str): the module name
+        instance (str): the GitHub instance to use, defaults to
+            "https://github.com".
+        user (str): the GitHub user, defaults to "nc0fr".
+        repo (str): the GitHub repository (without the ".git" suffix),
+            defaults to the module name.
+        ref (str): the Git ref to use, defaults to "master".
+    """
 
-# deprecated in favor of SVGU
-git.github(
-    name = "staticgovanityurls",
-    user = _NC0_GITHUB,
-    repo = "staticgovanityurls",
-    ref = "master",
-)
+    if repo == "":
+        repo = name
 
-git.github(
-    name = "svgu",
-    user = _NC0_GITHUB,
-    repo = "svgu",
-    ref = "master",
-)
+    module(
+        name = name,
+        vcs = GIT,
+        repo = "%s/%s/%s.git" % (instance, user, repo),
+        dir = "%s/%s/%s/tree/%s{/dir}" % (instance, user, repo, ref),
+        file = "%s/%s/%s/blob/%s{/dir}/{file}#{line}" %
+               (instance, user, repo, ref),
+    )
+
+def gitlab(
+        name,
+        instance = DEFAULT_GITLAB_INSTANCE,
+        user = NC0_GITLAB,
+        repo = "",
+        ref = DEFAULT_GIT_REF):
+    """Register a Go module hosted on GitLab.
+
+    Args:
+        name (str): the module name.
+        instance (str): the GitLab instance to use, defaults to
+            "https://gitlab.com".
+        user (str): the GitLab user, defaults to "nc0".
+        repo (str): the GitLab repository (without the ".git" suffix),
+            defaults to the module name.
+        ref (str): the Git ref to use, defaults to "master".
+    """
+
+    if repo == "":
+        repo = name
+
+    module(
+        name = name,
+        vcs = GIT,
+        repo = "%s/%s/%s.git" % (instance, user, repo),
+        dir = "%s/%s/%s/-/tree/%s{/dir}" % (instance, user, repo, ref),
+        file = "%s/%s/%s/-/blob/%s{/dir}/{file}#L{line}" %
+               (instance, user, repo, ref),
+    )
+
+def git_sourcehut(
+        name,
+        instance = DEFAULT_GIT_SOURCEHUT_INSTANCE,
+        user = NC0_SOURCEHUT,
+        repo = "",
+        ref = DEFAULT_GIT_REF):
+    """Register a Go module hosted of Source Hut's Git hosting.
+
+    Args:
+        name (str): the module name.
+        instance (str): the Git Source Hut instance to use, defaults
+            to "https://git.sr.ht".
+        user (str): the Source Hut user without the "~" prefix,
+            defaults to "nc0".
+        repo (str): the Git Source Hut repository (without the ".git"
+            suffix), defaults to the module name.
+        ref (str): the Git ref to use, defaults to "master".
+    """
+
+    if repo == "":
+        repo = name
+
+    module(
+        name = name,
+        vcs = GIT,
+        repo = "%s/~%s/%s.git" % (instance, user, repo),
+        dir = "%s/~%s/%s/tree/%s{/dir}" % (instance, user, repo, ref),
+        file = "%s/~%s/%s/tree/%s/item{/dir}/{file}#L{line}" %
+               (instance, user, repo, ref),
+    )
+
+def mercurial_sourcehut(
+        name,
+        instance = DEFAULT_MERCURIAL_SOURCEHUT_INSTANCE,
+        user = NC0_SOURCEHUT,
+        repo = "",
+        rev = DEFAULT_MERCURIAL_REV):
+    """Register a Go module hosted of Source Hut's Mercurial  hosting.
+
+    Args:
+        name (str): the module name.
+        instance (str): the Mercurial Source Hut instance to use,
+            defaults to "https://hg.sr.ht".
+        user (str): the Source Hut user without the "~" prefix,
+            defaults to "nc0".
+        repo (str): the Mercurial Source Hut repository, defaults to
+            the module name.
+        rev (str): the Mercurial revision to use, defaults to "master".
+    """
+
+    if repo == "":
+        repo = name
+
+    module(
+        name = name,
+        vcs = GIT,
+        repo = "%s/~%s/%s.git" % (instance, user, repo),
+        dir = "%s/~%s/%s/browse{/dir}?rev=%s" %
+              (instance, user, repo, rev),
+        file = "%s/~%s/%s/browse{/dir}/{file}?rev=%s#L{line}" %
+               (instance, user, repo, rev),
+    )
+
+# go.nc0.fr registry
+index(domain = DOMAIN)
+
+def simple_github_modules():
+    """
+    Simple modules are modules whose repository on GitHub is the
+    same as the module name.
+    """
+
+    # Note: staticgovanityurls is deprecated in favor of SVGU.
+    SIMPLE_GITHUB_MODULES = [
+        "feur_bot",
+        "clawflake",
+        "crocc",
+        "staticgovanityurls",
+        "svgu",
+    ]
+
+    for mod in SIMPLE_GITHUB_MODULES:
+        github(mod)
+
+simple_github_modules()
+github(name = "foo", repo = "foo-go")
