@@ -2,7 +2,7 @@
 # Use of this source code is governed by a BSD-style
 # license that can be found in the LICENSE file.
 """
-SVGU configuration for go.nc0.fr
+SVGU configuration for go.nc0.dev
 """
 
 # VCS
@@ -24,7 +24,7 @@ NC0_GITHUB = "nc0fr"
 NC0_SOURCEHUT = "nc0"
 NC0_GITLAB = "nc0"
 
-DOMAIN = "go.nc0.fr"
+DOMAIN = "go.nc0.dev"
 
 def github(
         name,
