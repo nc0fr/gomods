@@ -24,7 +24,7 @@ NC0_GITHUB = "nc0fr"
 NC0_SOURCEHUT = "nc0"
 NC0_GITLAB = "nc0"
 
-DOMAIN = "go.nc0.dev"
+DOMAIN = "go.nc0.fr"
 
 def github(
         name,
