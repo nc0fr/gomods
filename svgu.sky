@@ -2,7 +2,7 @@
 # Use of this source code is governed by a BSD-style
 # license that can be found in the LICENSE file.
 """
-SVGU configuration for go.nc0.dev
+SVGU configuration for go.nc0.fr
 """
 
 # VCS
@@ -152,21 +152,10 @@ def mercurial_sourcehut(
 # go.nc0.fr registry
 index(domain = DOMAIN)
 
-def simple_github_modules():
-    # Simple modules are modules whose repository on GitHub is the
-    # same as the module name.
-
-    # Note: staticgovanityurls is deprecated in favor of SVGU.
-    SIMPLE_GITHUB_MODULES = [
-        "feur_bot",
-        "clawflake",
-        "crocc",
-        "staticgovanityurls",
-        "svgu",
-    ]
-
-    for mod in SIMPLE_GITHUB_MODULES:
-        github(mod)
-
-simple_github_modules()
-github(name = "foo", repo = "foo-go")
+github(name = "foo",  repo = "foo-go")
+github(name = "feur_bot")
+github(name = "clawflake")
+github(name = "crocc")
+github(name = "staticgovanityurls")
+github(name = "svgu")
+github(name = "dotfiles")
